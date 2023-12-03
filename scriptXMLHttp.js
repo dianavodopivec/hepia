@@ -46,10 +46,19 @@ const printing = array => {
     $buttonsDiv.classList.add("card-buttons");
     const $buttonEdit = d.createElement("button");
     const $buttonDelete = d.createElement("button");
+    
     $buttonEdit.innerText = "EDIT";
+    $buttonEdit.classList.add("edit");
+    $buttonEdit.dataset.id = character.id;
+    $buttonEdit.dataset.name = character.name;
+    $buttonEdit.dataset.info = character.info;
+    $buttonEdit.dataset.isAlive = character.isAlive;
+    $buttonEdit.dataset.hasCromo = character.hasCromo;
+    $buttonEdit.dataset.photo = character.photo;
+
     $buttonDelete.innerText = "DELETE";
-    $buttonDelete.classList.add(character.id);
     $buttonDelete.classList.add("delete");
+    $buttonDelete.dataset.id = character.id;
 
     $card.appendChild($image);
     $card.appendChild($overlay);
