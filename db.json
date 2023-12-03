@@ -1,0 +1,111 @@
+{
+  "cyberpunk-characters": [
+    {
+      "id": 1,
+      "name": "David Martinez",
+      "info": "David Martinez, often referred to as just David, is a battle-hardened mercenary with a no-nonsense attitude. He has spent his entire life navigating the dangerous streets of Night City and is affiliated with both the Valentinos and Arasaka corporations.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://www.destructoid.com/wp-content/uploads/2023/09/Is-David-Martinez-from-Edgerunners-in-Cyberpunk-2077-featured.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Lucyna Kushinada",
+      "info": "Lucyna Kushinada, more commonly known as just Lucy, is a netrunner and the deuteragonist of Cyberpunk: Edgerunners.",
+      "isAlive": "true",
+      "hasCromo": "true",
+      "photo": "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2023/03/Lucy-hackeara-tu-corazon-con-espectacular-cosplay-de-Cyberpunk_-Edgerunners.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Rebecca",
+      "info": "Rebecca is a resilient rogue with a history of surviving dangerous situations. She's a formidable member of Maine's Crew and shouldn't be underestimated.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://www.geekmi.news/__export/1665417540441/sites/debate/img/2022/10/10/rebecca1.jpg_554688468.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Maine",
+      "info": "Maine is a veteran edgerunner who allows David to join his crew. Maine is a hulk of a man, with explosive raw power that is backed up with multiple cybernetic enhancements. His most-used cyberware is the Projectile Launch System, another forearm implant that fires projectiles at an alarming rate.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://twinfinite.net/wp-content/uploads/2022/09/Cyberpunk-Edgerunners-Maine-Screenshot.jpg?fit=1200%2C675"
+    },
+    {
+      "id": 5,
+      "name": "Adam Smasher",
+      "info": "Adam Smasher Was a Punk Turned Army Soldier. Short on options, Smasher decided to join the Army. There, he managed to make himself useful for a time, but his superiors eventually discharged him due to a stunning number of conduct violations.",
+      "isAlive": "null",
+      "hasCromo": "true",
+      "photo": "https://www.destructoid.com/wp-content/uploads/2023/09/cyberpunk-edgerunners-episode-010-adam-smasher.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Faraday",
+      "info": "Faraday, was a corporate fixer and the main adversary of the protagonists in the story of Cyberpunk Edgerunners. He is also slated to appear in the Cyberpunk 2077: Gangs of Night City board game. Faraday worked for Militech and can be described as a vicious and unmerciful fixer.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://images-ext-2.discordapp.net/external/m6xul0DhtHvXAwjIV3HGs5Xq7YPfsmMXy3snGDhVk8M/%3Fcb%3D20230324073600%26path-prefix%3Des/https/static.wikia.nocookie.net/cyberpunk/images/a/ad/CPEDGE_Faraday_1.jpg/revision/latest?format=webp&width=866&height=487"
+    },
+    {
+      "id": 7,
+      "name": "Falco",
+      "info": "Falco is a former Nomad wheelman who was part of Maine's edgerunner crew. He is first seen sharing an experience at Lizzie's Bar with Pilar and David.",
+      "isAlive": "true",
+      "hasCromo": "true",
+      "photo": "https://pbs.twimg.com/media/FdvAH36WAAA2NWy?format=jpg&name=large"
+    },
+    {
+      "id": 8,
+      "name": "Dorio",
+      "info": "Dorio is an extremely tall and physically imposing woman. She is the second tallest member of Maine's crew, with only Maine who has drastically increased his physical size with cyberware shown to be taller.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://staticg.sportskeeda.com/editor/2022/09/e5e31-16638740404322-1920.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Kiwi",
+      "info": "A member of Maine's crew of mercenaries, Kiwi is an enigmatic and snarky netrunner with a detachable cybernetic jaw mask who acts as a mentor to Lucy.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://64.media.tumblr.com/57a8d22de8080df28a585e6f83ac92bd/c80dccac30b62b0a-1f/s1280x1920/6c03994f97e0b7f29291d6f3bd89f09f20550b71.jpg"
+    }
+  ],
+  "cyberpunk-villiains": [
+    {
+      "id": 21,
+      "name": "Adam Smasher",
+      "genre": "Male",
+      "quote": "In the end, we all serve the corporation.",
+      "isAlive": null,
+      "hasCromo": true,
+      "rol": "Cyber-enhanced enforcer and ruthless loyalist to the mega-corporations.",
+      "afiliated": "Serves as a prime agent for Arasaka Corporation's interests.",
+      "photo": "https://cdn.discordapp.com/attachments/763661782555426817/1177449912141611118/cyberpunk-2077-adam-smasher.png?ex=65728caf&is=656017af&hm=71be2f01a6a09fbbaa1d5adb166da4b04b30ce098f71c3f80899e55c5b0a3e18&"
+    },
+    {
+      "id": 22,
+      "name": "Royce",
+      "genre": "Male",
+      "quote": "Rules are for suckers. We make our own rules in this city.",
+      "isAlive": null,
+      "hasCromo": true,
+      "rol": "Gang leader and black-market kingpin with a penchant for chaos.",
+      "afiliated": "Leads the Maelstrom gang, notorious for cyber-implant thefts and violence.",
+      "photo": "https://cdn.discordapp.com/attachments/763661782555426817/1177450070380118036/cyberpunk-2077-royce-uhdpaper.png?ex=65728cd4&is=656017d4&hm=7010fca594f72640e124c6b12cb73f9a0da16414cd0bbe628e2957653a93d828&"
+    },
+    {
+      "id": 23,
+      "name": "Saburo Arasaka",
+      "genre": "Male",
+      "quote": "Power is not given. It is taken.",
+      "isAlive": true,
+      "hasCromo": true,
+      "rol": "Elderly yet cunning CEO of Arasaka Corporation, wielding immense influence.",
+      "afiliated": "Head of the Arasaka dynasty, a megacorporation with a ruthless reputation.",
+      "photo": "https://cdn.discordapp.com/attachments/763661782555426817/1177449838397362176/mRYWC8X2dhj2IbkWHaDFSQ.png?ex=65728c9d&is=6560179d&hm=1db729fd52859b9a094fc303471dc6770f5fef02a7b1da245e8d2cb8bceb13ee&"
+    }
+  ]
+}

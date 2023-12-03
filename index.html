@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/ejercicio/icon.png" type="image/x-icon">
+    <title>CRUD API REST AJAX</title>
+</head>
+
+<body>
+    <main>
+        <div class="container-characters-base">
+            <h1>EDGERUNNERS CRUD API REST AJAX</h1>
+            <h2>OUR CHARACTERS</h2>
+            <article class="content-characters">
+                <!-- PERSONAJES DINAMICOS -->
+
+
+            </article>
+        </div>
+        <section class="crud">
+            <h2 class="crud-title">ADD CHARACTER</h2>
+            <article>
+                <form class="crud-form">
+                    <input type="text" name="name" placeholder="Name..." required autocomplete="off">
+                    <input type="text" name="info" placeholder="Info..." required autocomplete="off">
+                    <select name="isAlive" id="isAlive" required>
+                        <option value="" disabled selected>Is Alive?</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                        <option value="null">It is not known...</option>
+                    </select>
+                    <select name="hasCromo" required>
+                        <option value="" disabled selected>Has cromo?</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                    <input type="text" name="photo" placeholder="URL Photo." required autocomplete="off">
+                    <input type="submit" value="SEND" id="send">
+                    <input type="hidden" name="action">
+                </form>
+            </article>
+
+        </section>
+    </main>
+    <!-- <template id="crud-template">
+        <div class="card">
+            <img src="https://media.discordapp.net/attachments/763661782555426817/1178104444005658706/maxresdefault.png?ex=6574ee43&is=65627943&hm=a7ab4a22bd06ec852ec831bc88160da34c1ad11d274c89d9e1896b97100249e2&=&format=webp&width=1193&height=671"
+                alt="" srcset="">
+            <div class="card-info">
+                <h2>David Martinez</h2>
+                <p>Cromo: Yes - Is Alive: No</p>
+                <p>David Martinez, often referred to as just David, is a battle-hardened mercenary with a
+                    no-nonsense attitude. He has spent his entire life navigating the dangerous streets of Night
+                    City and is affiliated with both the Valentinos and Arasaka corporations.</p>
+            </div>
+            <div class="card-buttons">
+                <button class="edit">EDIT</button>
+                <button class="delete">DELETE</button>
+            </div>
+        </div>
+
+    </template> -->
+   <!--  <script src="/script.js"></script>-->
+</body>
+
+</html>
