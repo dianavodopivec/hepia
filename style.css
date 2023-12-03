@@ -186,6 +186,10 @@
     -ms-border-radius: 0px 0px 0px 0px;
     -o-border-radius: 0px 0px 0px 0px;
   }
+
+  .card-help {
+    opacity: 1 !important;
+  }
   
   .overlay {
     background-color: rgb(25, 26, 27);
