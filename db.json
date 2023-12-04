@@ -71,6 +71,14 @@
       "isAlive": "false",
       "hasCromo": "true",
       "photo": "https://64.media.tumblr.com/57a8d22de8080df28a585e6f83ac92bd/c80dccac30b62b0a-1f/s1280x1920/6c03994f97e0b7f29291d6f3bd89f09f20550b71.jpg"
+    },
+    {
+      "name": "Sasha Yakovleva",
+      "info": "Skilled netrunner in Maine's crew, sought revenge against Biotechnica for her mother's death due to their painkillers",
+      "isAlive": "true",
+      "hasCromo": "true",
+      "photo": "https://static.wikia.nocookie.net/cyberpunk/images/1/1e/Sasha_Infobox_CPEDGE.png/revision/latest?cb=20230402134653&path-prefix=es",
+      "id": 10
     }
   ],
   "cyberpunk-villiains": [

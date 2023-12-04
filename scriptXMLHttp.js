@@ -46,7 +46,7 @@ const printing = array => {
     $buttonsDiv.classList.add("card-buttons");
     const $buttonEdit = d.createElement("button");
     const $buttonDelete = d.createElement("button");
-    
+
     $buttonEdit.innerText = "EDIT";
     $buttonEdit.classList.add("edit");
     $buttonEdit.dataset.id = character.id;
@@ -112,3 +112,31 @@ const getAll = () => {
 }
 
 d.addEventListener("DOMContentLoaded", getAll)
+
+//FORMA DE MIRCHA 
+
+$form.addEventListener("click", e => {
+  if(e.target === $sendButton) {
+    e.preventDefault()
+
+    if(!e.target.id.value){
+      //Si no existe tal valor, se realizará una petición POST (Create).
+      ajax({
+        method: "POST",
+        url: "http://localhost:5000/cyberpunk-characters",
+        success: (res) => location.reload,  
+        error: () => 
+        $form.insertAdjacentHTML("beforebegin", `<h3>${err}</h3>`),
+        data: {
+          name: e.target.name.value,
+          info: e.target.info.value,
+          isAlive: e.target.isAlive.value,
+          hasCromo: e.target.hasCromo.value,
+          photo: e.target.photo.value
+        }
+      })
+    } else {
+      //Si existe tal valor, se realizará una petición PUT (Update).
+    }
+  }
+})
