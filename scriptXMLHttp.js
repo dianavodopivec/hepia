@@ -170,9 +170,10 @@ $form.addEventListener("click", e => {
   }
 })
 
+//Editar el PUT - EDIT
 d.addEventListener("click", e => {
   if(e.target.matches(".edit")){
-    alert("Presionaste el botón EDIT")
+    alert("You pressed the EDIT button")
     $title.textContent = "EDIT MODE"
     $form[0].value = e.target.dataset.name
     $form[1].value = e.target.dataset.info
@@ -181,6 +182,18 @@ d.addEventListener("click", e => {
     $form[4].value = e.target.dataset.photo
   }
   if(e.target.matches(".delete")){
-    alert("Presionaste el botón DELETE")
-  }
+    const isDelete = confirm(`are you sure you want to delete the id "${e.target.dataset.id}?`)
+
+    if(isDelete){
+      //Eliminar el PUT - DELETE
+      ajax({
+        method: "DELETE",
+        url: `http://localhost:5000/cyberpunk-characters/${e.target.dataset.id}`,
+        success: (res) => location.reload(),  
+        error: () => 
+        alert(`An error ${err} occurred and the character could not be deleted correctly 😓`)
+      })
+    }
+
+    }
 })
