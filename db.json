@@ -73,14 +73,6 @@
       "photo": "https://64.media.tumblr.com/57a8d22de8080df28a585e6f83ac92bd/c80dccac30b62b0a-1f/s1280x1920/6c03994f97e0b7f29291d6f3bd89f09f20550b71.jpg"
     },
     {
-      "name": "jijiji",
-      "info": "jijiasdi",
-      "isAlive": "null",
-      "hasCromo": "true",
-      "photo": "https://www.geekmi.news/__export/1665340735251/sites/debate/img/2022/10/09/david_2.jpg_423682103.jpg",
-      "id": 10
-    },
-    {
       "name": "mixi",
       "info": "mixi",
       "isAlive": "true",
@@ -89,20 +81,12 @@
       "id": 11
     },
     {
-      "name": "jiji",
-      "info": "jijiasdi",
-      "isAlive": "null",
-      "hasCromo": "true",
-      "photo": "https://www.geekmi.news/__export/1665340735251/sites/debate/img/2022/10/09/david_2.jpg_423682103.jpg",
-      "id": 12
-    },
-    {
-      "name": "Imixi",
+      "name": "mixi",
       "info": "mixi",
       "isAlive": "true",
       "hasCromo": "true",
       "photo": "https://static.nationalgeographicla.com/files/styles/image_3200/public/nationalgeographic_1468962.jpg?w=1600&h=900",
-      "id": 13
+      "id": 12
     }
   ],
   "cyberpunk-villiains": [
