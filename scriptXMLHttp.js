@@ -5,6 +5,13 @@ const $title = d.querySelector(".crud-title");
 const $sendButton = d.getElementById("send");
 const $fragment = d.createDocumentFragment();
 
+const regex = {
+  regexname: /^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/,
+  regexinfo: /^(?![\s\d]+$).+$/,
+  regexurl:
+    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/,
+};
+
 const printing = array => {
   if (array.length === 0) {
     return;
@@ -118,25 +125,62 @@ d.addEventListener("DOMContentLoaded", getAll)
 $form.addEventListener("click", e => {
   if(e.target === $sendButton) {
     e.preventDefault()
-
+    if(!regex.regexname.test($form[0].value)){
+      return
+    }
+    if(!regex.regexinfo.test($form[1].value)){
+      return
+    }
+    if(!regex.regexurl.test($form[4].value)){
+      return
+    }
     if(!e.target.id.value){
       //Si no existe tal valor, se realizará una petición POST (Create).
       ajax({
         method: "POST",
         url: "http://localhost:5000/cyberpunk-characters",
-        success: (res) => location.reload,  
+        success: (res) => location.reload(),  
         error: () => 
         $form.insertAdjacentHTML("beforebegin", `<h3>${err}</h3>`),
         data: {
-          name: e.target.name.value,
-          info: e.target.info.value,
-          isAlive: e.target.isAlive.value,
-          hasCromo: e.target.hasCromo.value,
-          photo: e.target.photo.value
+          name: $form[0].value,
+          info: $form[1].value,
+          isAlive: $form[2].value,
+          hasCromo: $form[3].value,
+          photo: $form[4].value
         }
       })
     } else {
       //Si existe tal valor, se realizará una petición PUT (Update).
+      ajax({
+        method: "PUT",
+        url: `http://localhost:5000/cyberpunk-characters/${e.target.id.value}`,
+        success: (res) => location.reload(),  
+        error: () => 
+        $form.insertAdjacentHTML("beforebegin", `<h3>${err}</h3>`),
+        data: {
+          name: $form[0].value,
+          info: $form[1].value,
+          isAlive: $form[2].value,
+          hasCromo: $form[3].value,
+          photo: $form[4].value
+        }
+      })
     }
+  }
+})
+
+d.addEventListener("click", e => {
+  if(e.target.matches(".edit")){
+    alert("Presionaste el botón EDIT")
+    $title.textContent = "EDIT MODE"
+    $form[0].value = e.target.dataset.name
+    $form[1].value = e.target.dataset.info
+    $form[2].value = e.target.dataset.isAlive
+    $form[3].value = e.target.dataset.hasCromo
+    $form[4].value = e.target.dataset.photo
+  }
+  if(e.target.matches(".delete")){
+    alert("Presionaste el botón DELETE")
   }
 })
