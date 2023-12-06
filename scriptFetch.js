@@ -24,7 +24,19 @@ const printer = (array) => {
     $h2.innerText = character.name;
     const $p1 = d.createElement("p");
     const $p2 = d.createElement("p");
-    $p1.innerText = `Cromo: ${character.hasCromo} - Is Alive: ${character.isAlive}`;
+    let cromo;
+    JSON.parse(character.hasCromo) === true ? (cromo = "Yes") : (cromo = "No");
+    let alive 
+    if(character.isAlive === "true") {
+      alive = "Yes"
+    }
+    if(character.isAlive === "false") {
+      alive = "No"
+    }
+    if(character.isAlive === "null") {
+      alive = "We don't know..."
+    }
+    $p1.innerText = `Cromo: ${cromo} - Is Alive: ${alive}`;
     $p2.innerText = character.info;
     //Crear botones de EDITAR y ELIMINAR.
     const $buttonContainer = d.createElement("div");
@@ -61,10 +73,24 @@ const printer = (array) => {
 
 //Personaje al que queremos eliminar
 const characterDELETE = async (id) => {
-  const response = await fetch(
-    `http://localhost:5000/cyberpunk-characters/${id}`,
-    { method: "DELETE" }
-  );
+  try {
+    const options = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(
+      `http://localhost:5000/cyberpunk-characters/${id}`,
+      options
+    );
+    if (!response.ok) {
+      throw {
+        status: response.status,
+        message: `😢 The character with the ID: "${id}" was not deleted`,
+      };
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 //Función del botón DELETE que se vincula con la función characterDELETE.
 const actionsDeleteBtn = () => {

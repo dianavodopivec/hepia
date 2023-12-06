@@ -55,6 +55,22 @@
       "isAlive": "true",
       "hasCromo": "true",
       "photo": "https://pbs.twimg.com/media/FdvAH36WAAA2NWy?format=jpg&name=large"
+    },
+    {
+      "id": 8,
+      "name": "Dorio",
+      "info": "Dorio is an extremely tall and physically imposing woman. She is the second tallest member of Maine's crew, with only Maine who has drastically increased his physical size with cyberware shown to be taller.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://staticg.sportskeeda.com/editor/2022/09/e5e31-16638740404322-1920.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Kiwi",
+      "info": "A member of Maine's crew of mercenaries, Kiwi is an enigmatic and snarky netrunner with a detachable cybernetic jaw mask who acts as a mentor to Lucy.",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://64.media.tumblr.com/57a8d22de8080df28a585e6f83ac92bd/c80dccac30b62b0a-1f/s1280x1920/6c03994f97e0b7f29291d6f3bd89f09f20550b71.jpg"
     }
   ],
   "cyberpunk-villiains": [
