@@ -5,6 +5,8 @@ const $title = d.querySelector(".crud-title");
 const $sendButton = d.getElementById("send");
 const $fragment = d.createDocumentFragment();
 
+//========================= IMPRESORA =========================//
+
 //Impresión de personajes con sus respectivas cards, informacion y botones.
 const printer = (array) => {
   array.forEach((character) => {
@@ -12,18 +14,22 @@ const printer = (array) => {
     const $card = d.createElement("div");
     $card.classList.add("card");
     $card.classList.add("card-auxiliar");
+
     //Crear una imagen para cada personaje.
     const $image = d.createElement("img");
     $image.setAttribute("src", character.photo);
     $image.setAttribute("alt", character.name);
+
     //Crear una carta con la información del personaje.
     const $cardInfo = d.createElement("article");
     $cardInfo.classList.add("card-info");
+
     //Crear titulo y otros.
     const $h2 = d.createElement("h2");
     $h2.innerText = character.name;
     const $p1 = d.createElement("p");
     const $p2 = d.createElement("p");
+
     let cromo;
     JSON.parse(character.hasCromo) === true ? (cromo = "Yes") : (cromo = "No");
     let alive 
@@ -38,9 +44,11 @@ const printer = (array) => {
     }
     $p1.innerText = `Cromo: ${cromo} - Is Alive: ${alive}`;
     $p2.innerText = character.info;
+
     //Crear botones de EDITAR y ELIMINAR.
     const $buttonContainer = d.createElement("div");
     $buttonContainer.classList.add("card-buttons");
+
     //BOTON EDITAR
     const $editButton = d.createElement("button");
     $editButton.classList.add("edit");
@@ -51,6 +59,7 @@ const printer = (array) => {
     $editButton.dataset.isAlive = character.isAlive;
     $editButton.dataset.hasCromo = character.hasCromo;
     $editButton.dataset.photo = character.photo;
+
     //BOTON ELIMINAR
     const $deleteButton = d.createElement("button");
     $deleteButton.classList.add("delete");
@@ -70,8 +79,87 @@ const printer = (array) => {
   });
   $table.appendChild($fragment);
 };
+//=================== ACCIONES ================//
 
-//Personaje al que queremos eliminar
+//✨ Personaje al que queremos CREAR a través de POST.
+const characterPOST = async () => {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "name": $form[0].value,
+        "info": $form[1].value,
+        "isAlive": $form[2].value,
+        "hasCromo": $form[3].value,
+        "photo": $form[4].value
+      })
+    };
+
+    const response = await fetch(
+      `http://localhost:5000/cyberpunk-characters`,
+      options
+    );
+
+    if (!response.ok) {
+      throw {
+        status: response.status,
+        message: `We're sorry! An error occurred, and we couldn't create your character. 🫠`,
+      };
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+//⚡️ Función del botón SUBMIT que se vincula con la función characterPOST.
+
+const actionsPostBtn = () => {
+  $sendButton.addEventListener("click", e => {
+    characterPOST($sendButton)
+  })
+}
+
+//✨ Personaje al que queremos EDITAR a través de EDIT.
+const characterEDIT = async () => {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "name": $form[0].value,
+        "info": $form[1].value,
+        "isAlive": $form[2].value,
+        "hasCromo": $form[3].value,
+        "photo": $form[4].value
+      })
+    };
+
+    const response = await fetch(
+      `http://localhost:5000/cyberpunk-characters/7`,
+      options
+    );
+
+    if (!response.ok) {
+      throw {
+        status: response.status,
+        message: `We're sorry! An error occurred, and we couldn't create your character. 🫠`,
+      };
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+//⚡️ Función del botón EDIT que se vincula con la función characterEDIT.
+const actionsEditBtn = () => {
+  console.log(actionsEditBtn)
+}
+
+//✨ Personaje al que queremos ELIMINAR a través de DELETE.
 const characterDELETE = async (id) => {
   try {
     const options = {
@@ -92,7 +180,8 @@ const characterDELETE = async (id) => {
     console.error(error);
   }
 };
-//Función del botón DELETE que se vincula con la función characterDELETE.
+
+//⚡️ Función del botón DELETE que se vincula con la función characterDELETE.
 const actionsDeleteBtn = () => {
   $table.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete")) {
@@ -101,6 +190,8 @@ const actionsDeleteBtn = () => {
     }
   });
 };
+
+//========================= API/FETCH =========================//
 
 //Consumo de la API de dichos personajes a través de FETCH.
 const consumeApi = async () => {
@@ -121,5 +212,6 @@ const consumeApi = async () => {
   }
 };
 
+actionsPostBtn()
 actionsDeleteBtn();
 consumeApi();
