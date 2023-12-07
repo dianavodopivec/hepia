@@ -9,14 +9,6 @@
       "photo": "https://www.destructoid.com/wp-content/uploads/2023/09/Is-David-Martinez-from-Edgerunners-in-Cyberpunk-2077-featured.jpg"
     },
     {
-      "id": 2,
-      "name": "Lucyna Kushinada",
-      "info": "Lucyna Kushinada, more commonly known as just Lucy, is a netrunner and the deuteragonist of Cyberpunk: Edgerunners.",
-      "isAlive": "true",
-      "hasCromo": "true",
-      "photo": "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2023/03/Lucy-hackeara-tu-corazon-con-espectacular-cosplay-de-Cyberpunk_-Edgerunners.jpg"
-    },
-    {
       "id": 3,
       "name": "Rebecca",
       "info": "Rebecca is a resilient rogue with a history of surviving dangerous situations. She's a formidable member of Maine's Crew and shouldn't be underestimated.",
@@ -73,12 +65,28 @@
       "photo": "https://64.media.tumblr.com/57a8d22de8080df28a585e6f83ac92bd/c80dccac30b62b0a-1f/s1280x1920/6c03994f97e0b7f29291d6f3bd89f09f20550b71.jpg"
     },
     {
+      "id": 10,
       "name": "Pilar",
-      "info": "Pilar was an edgerunner from Night City and was described as a comedic and vulgar techie. He and his sister, Rebecca, often join Maine and his team to carry out mercenary jobs.",
+      "info": "Pilar was an edgerunner of Night City, and was described as a comical and crude techie. He and his sister Rebecca often team up with Maine and his crew to conduct mercenary jobs.",
       "isAlive": "false",
       "hasCromo": "true",
-      "photo": "https://i.ytimg.com/vi/PGQLNJkYx0U/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gNCg8MA8=&rs=AOn4CLAz1oU2GeJAKvvh4ZCAoijG0lQrmA",
-      "id": 13
+      "photo": "https://desu.shikimori.one/uploads/poster/characters/215034/main_2x-4d2d24b20763079c8700c9991a67203c.webp"
+    },
+    {
+      "name": "dsadsad",
+      "info": "asdasd",
+      "isAlive": "true",
+      "hasCromo": "true",
+      "photo": "http://127.0.0.1:5500/index.html",
+      "id": 11
+    },
+    {
+      "name": "fdsf",
+      "info": "dsfdsf",
+      "isAlive": "false",
+      "hasCromo": "false",
+      "photo": "http://127.0.0.1:5500/index.html",
+      "id": 12
     }
   ],
   "cyberpunk-villiains": [
