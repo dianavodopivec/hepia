@@ -120,8 +120,6 @@ const getAll = () => {
 
 d.addEventListener("DOMContentLoaded", getAll)
 
-//FORMA DE MIRCHA 
-
 $form.addEventListener("click", e => {
   if(e.target === $sendButton) {
     e.preventDefault()
