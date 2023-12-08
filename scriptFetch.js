@@ -4,214 +4,231 @@ const $form = d.querySelector(".crud-form");
 const $title = d.querySelector(".crud-title");
 const $sendButton = d.getElementById("send");
 const $fragment = d.createDocumentFragment();
+let isEditing = false
+let idToEdit 
 
-//========================= IMPRESORA =========================//
+//============== IMPRESORA ==============//
 
-//Impresión de personajes con sus respectivas cards, informacion y botones.
-const printer = (array) => {
+const printing = (array) => {
+  if (array.length === 0) {
+    return;
+  }
   array.forEach((character) => {
-    //Crear una carta para cada personaje.
     const $card = d.createElement("div");
     $card.classList.add("card");
-    $card.classList.add("card-auxiliar");
+    $card.classList.add("card-help");
+    const $overlay = d.createElement("div");
 
-    //Crear una imagen para cada personaje.
     const $image = d.createElement("img");
     $image.setAttribute("src", character.photo);
-    $image.setAttribute("alt", character.name);
-
-    //Crear una carta con la información del personaje.
-    const $cardInfo = d.createElement("article");
+    $image.setAttribute("alt", `A photo of ${character.name}.`);
+    $image.onerror = () => {
+      console.warn(
+        `${character.name} photo has a problem and is loading the default picture.`
+      );
+      $image.setAttribute("src", "/zCRUDAJAX/failedToLoad.jpg");
+    };
+    const $cardInfo = d.createElement("div");
     $cardInfo.classList.add("card-info");
 
-    //Crear titulo y otros.
-    const $h2 = d.createElement("h2");
-    $h2.innerText = character.name;
+    const $characterTitle = d.createElement("h2");
+    $characterTitle.innerText = character.name;
+
     const $p1 = d.createElement("p");
     const $p2 = d.createElement("p");
-
     let cromo;
-    JSON.parse(character.hasCromo) === true ? (cromo = "Yes") : (cromo = "No");
-    let alive 
-    if(character.isAlive === "true") {
-      alive = "Yes"
-    }
-    if(character.isAlive === "false") {
-      alive = "No"
-    }
-    if(character.isAlive === "null") {
-      alive = "We don't know..."
+    let alive;
+    character.hasCromo === "true" ? (cromo = "Yes") : (cromo = "No");
+    character.isAlive === "true" ? (alive = "Yes") : (alive = "No");
+    if (character.isAlive === "null") {
+      alive = "Maybe...";
     }
     $p1.innerText = `Cromo: ${cromo} - Is Alive: ${alive}`;
     $p2.innerText = character.info;
 
-    //Crear botones de EDITAR y ELIMINAR.
-    const $buttonContainer = d.createElement("div");
-    $buttonContainer.classList.add("card-buttons");
+    const $buttonsDiv = d.createElement("div");
+    $buttonsDiv.classList.add("card-buttons");
+    const $buttonEdit = d.createElement("button");
+    const $buttonDelete = d.createElement("button");
 
-    //BOTON EDITAR
-    const $editButton = d.createElement("button");
-    $editButton.classList.add("edit");
-    $editButton.innerText = "EDIT";
-    $editButton.dataset.id = character.id;
-    $editButton.dataset.name = character.name;
-    $editButton.dataset.info = character.info;
-    $editButton.dataset.isAlive = character.isAlive;
-    $editButton.dataset.hasCromo = character.hasCromo;
-    $editButton.dataset.photo = character.photo;
+    $buttonEdit.innerText = "EDIT";
+    $buttonEdit.classList.add("edit");
+    $buttonEdit.dataset.id = character.id;
+    $buttonEdit.dataset.name = character.name;
+    $buttonEdit.dataset.info = character.info;
+    $buttonEdit.dataset.isAlive = character.isAlive;
+    $buttonEdit.dataset.hasCromo = character.hasCromo;
+    $buttonEdit.dataset.photo = character.photo;
 
-    //BOTON ELIMINAR
-    const $deleteButton = d.createElement("button");
-    $deleteButton.classList.add("delete");
-    $deleteButton.innerText = "DELETE";
-    $deleteButton.dataset.id = character.id;
+    $buttonDelete.innerText = "DELETE";
+    $buttonDelete.classList.add("delete");
+    $buttonDelete.dataset.id = character.id;
 
-    //Vincular las cosas para que no esten flotando :D
     $card.appendChild($image);
-    $cardInfo.appendChild($h2);
+    $card.appendChild($overlay);
+    $cardInfo.appendChild($characterTitle);
     $cardInfo.appendChild($p1);
     $cardInfo.appendChild($p2);
     $card.appendChild($cardInfo);
-    $buttonContainer.appendChild($editButton);
-    $buttonContainer.appendChild($deleteButton);
-    $card.appendChild($buttonContainer);
+    $buttonsDiv.appendChild($buttonEdit);
+    $buttonsDiv.appendChild($buttonDelete);
+    $card.appendChild($buttonsDiv);
     $fragment.appendChild($card);
   });
+  $table.innerHTML = "";
   $table.appendChild($fragment);
 };
-//=================== ACCIONES ================//
 
-//✨ Personaje al que queremos CREAR a través de POST.
-const characterPOST = async () => {
+//================ CRUD ================//
+
+const POST_character = async (id) => {
   try {
     const options = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        "name": $form[0].value,
-        "info": $form[1].value,
-        "isAlive": $form[2].value,
-        "hasCromo": $form[3].value,
-        "photo": $form[4].value
-      })
+        id: id,
+        name: $form[0].value,
+        info: $form[1].value,
+        isAlive: $form[2].value,
+        hasCromo: $form[3].value,
+        photo: $form[4].value,
+      }),
     };
-
-    const response = await fetch(
-      `http://localhost:5000/cyberpunk-characters`,
-      options
-    );
-
+    const response = await fetch("http://localhost:5000/cyberpunk-characters", options)
     if (!response.ok) {
       throw {
+        message: response.statusText || `Oops something went wrong!`,
         status: response.status,
-        message: `We're sorry! An error occurred, and we couldn't create your character. 🫠`,
       };
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 };
-//⚡️ Función del botón SUBMIT que se vincula con la función characterPOST.
 
-const actionsPostBtn = () => {
-  $sendButton.addEventListener("click", e => {
-    characterPOST($sendButton)
-  })
-}
-
-//✨ Personaje al que queremos EDITAR a través de EDIT.
-const characterEDIT = async () => {
+const PUT_character = async (id) => {
   try {
     const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        "name": $form[0].value,
-        "info": $form[1].value,
-        "isAlive": $form[2].value,
-        "hasCromo": $form[3].value,
-        "photo": $form[4].value
-      })
+        id: id,
+        name: $form[0].value,
+        info: $form[1].value,
+        isAlive: $form[2].value,
+        hasCromo: $form[3].value,
+        photo: $form[4].value,
+      }),
     };
-
-    const response = await fetch(
-      `http://localhost:5000/cyberpunk-characters/7`,
-      options
-    );
-
+    const response = await fetch(`http://localhost:5000/cyberpunk-characters/${id}`, options)
     if (!response.ok) {
       throw {
+        message: response.statusText || `We're sorry! An error occurred, and we couldn't create your character ...`,
         status: response.status,
-        message: `We're sorry! An error occurred, and we couldn't create your character. 🫠`,
       };
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }
 
-//⚡️ Función del botón EDIT que se vincula con la función characterEDIT.
-const actionsEditBtn = () => {
-  console.log(actionsEditBtn)
-}
-
-//✨ Personaje al que queremos ELIMINAR a través de DELETE.
-const characterDELETE = async (id) => {
+const DELETE_character = async (id) => {
   try {
     const options = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     };
-    const response = await fetch(
-      `http://localhost:5000/cyberpunk-characters/${id}`,
-      options
-    );
+    const response = await fetch(`http://localhost:5000/cyberpunk-characters/${id}`, options)
     if (!response.ok) {
       throw {
+        message: response.statusText || `The character with the ID: "${id}" was not deleted`,
         status: response.status,
-        message: `😢 The character with the ID: "${id}" was not deleted`,
       };
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-//⚡️ Función del botón DELETE que se vincula con la función characterDELETE.
-const actionsDeleteBtn = () => {
-  $table.addEventListener("click", (e) => {
-    if (e.target.classList.contains("delete")) {
-      const deleteId = e.target.dataset.id;
-      characterDELETE(deleteId);
+//======== SENDBUTTON ACTIONS =========//
+// 🧠 NOTA: El botón de SEND también está relacionado con el botón EDIT.
+$table.addEventListener("click", e => {
+  if(e.target.classList.contains("edit")){
+    if(isEditing === false){
+      isEditing = true
+      idToEdit = e.target.dataset.id
+      $form[0].value = e.target.dataset.name
+      $form[1].value = e.target.dataset.info
+      $form[2].value = e.target.dataset.isAlive
+      $form[3].value = e.target.dataset.hasCromo
+      $form[4].value = e.target.dataset.photo
+      $title.innerText = `EDITING: ${e.target.dataset.name.toUpperCase()}`
+      const $allEditButtons = document.querySelectorAll(".edit")
+      $allEditButtons.forEach((button) => {
+        button.innerText = "CANCEL"
+      })
+    } else {
+      isEditing = false
+      idToEdit = null
+      $form[0].value = ""
+      $form[1].value = ""
+      $form[2].value = ""
+      $form[3].value = ""
+      $form[4].value = ""
+      $title.innerText = "ADD CHARACTER"
+      const $allEditButtons = document.querySelectorAll(".edit")
+      $allEditButtons.forEach((button) => {
+        button.innerText = "EDIT"
+      })
     }
-  });
-};
+  }
+})
 
-//========================= API/FETCH =========================//
+$sendButton.addEventListener("click", e => {
+e.preventDefault()
+if(isEditing === true){
+  return
+}
+const $editButtons = document.querySelectorAll(".edit") 
+const arrayButtons = [...$editButtons]
+const arrayId = arrayButtons.map((button) => {
+ return button.dataset.id
+})
+const newId = Math.max(...arrayId) + 1
+POST_character(newId)
+})
 
-//Consumo de la API de dichos personajes a través de FETCH.
+$sendButton.addEventListener("click", e => {
+if(isEditing === false){
+    return
+  }
+PUT_character(idToEdit)
+})
+
+$table.addEventListener("click", e => {
+  if(e.target.classList.contains("delete")){
+    const deleteId = e.target.dataset.id
+    DELETE_character(deleteId)
+  }
+})
+
+//============ API FETCH ============//
+
 const consumeApi = async () => {
   try {
     const response = await fetch("http://localhost:5000/cyberpunk-characters");
     const data = await response.json();
-    console.log(data);
-    //Aquí se manejan los ERRORES\\
     if (!response.ok) {
       throw {
-        message: response.statusText || "😢",
+        message: response.statusText || `Oops something went wrong!`,
         status: response.status,
       };
     }
-    printer(data);
+    printing(data);
   } catch (error) {
     console.error(error);
   }
 };
 
-actionsPostBtn()
-actionsDeleteBtn();
 consumeApi();
