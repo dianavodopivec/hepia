@@ -7,6 +7,8 @@ const $fragment = d.createDocumentFragment();
 let isEditing = false
 let idToEdit 
 
+//============== IMPRESORA ==============//
+
 const printing = (array) => {
   if (array.length === 0) {
     return;
@@ -77,6 +79,8 @@ const printing = (array) => {
   $table.appendChild($fragment);
 };
 
+//================ CRUD ================//
+
 const POST_character = async (id) => {
   try {
     const options = {
@@ -120,7 +124,7 @@ const PUT_character = async (id) => {
     const response = await fetch(`http://localhost:5000/cyberpunk-characters/${id}`, options)
     if (!response.ok) {
       throw {
-        message: response.statusText || `Oops something went wrong!`,
+        message: response.statusText || `We're sorry! An error occurred, and we couldn't create your character ...`,
         status: response.status,
       };
     }
@@ -129,6 +133,26 @@ const PUT_character = async (id) => {
   }
 }
 
+const DELETE_character = async (id) => {
+  try {
+    const options = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(`http://localhost:5000/cyberpunk-characters/${id}`, options)
+    if (!response.ok) {
+      throw {
+        message: response.statusText || `The character with the ID: "${id}" was not deleted`,
+        status: response.status,
+      };
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+//======== SENDBUTTON ACTIONS =========//
+// 🧠 NOTA: El botón de SEND también está relacionado con el botón EDIT.
 $table.addEventListener("click", e => {
   if(e.target.classList.contains("edit")){
     if(isEditing === false){
@@ -182,6 +206,14 @@ if(isEditing === false){
 PUT_character(idToEdit)
 })
 
+$table.addEventListener("click", e => {
+  if(e.target.classList.contains("delete")){
+    const deleteId = e.target.dataset.id
+    DELETE_character(deleteId)
+  }
+})
+
+//============ API FETCH ============//
 
 const consumeApi = async () => {
   try {
