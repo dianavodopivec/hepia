@@ -4,7 +4,6 @@ const $form = d.querySelector(".crud-form");
 const $title = d.querySelector(".crud-title");
 const $fragment = d.createDocumentFragment();
 const $sendButton = d.getElementById("send");
-let isEditing = false;
 
 //============== IMPRESORA ==============//
 const printing = (array) => {
