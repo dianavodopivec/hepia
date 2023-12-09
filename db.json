@@ -71,6 +71,22 @@
       "isAlive": "false",
       "hasCromo": "true",
       "photo": "https://desu.shikimori.one/uploads/poster/characters/215034/main_2x-4d2d24b20763079c8700c9991a67203c.webp"
+    },
+    {
+      "id": 11,
+      "name": "asdsa",
+      "info": "adsdasdsa",
+      "isAlive": "false",
+      "hasCromo": "true",
+      "photo": "https://png.pngtree.com/png-clipart/20230511/ourmid/pngtree-isolated-cat-on-white-background-png-image_7094927.png"
+    },
+    {
+      "name": "Mixitto",
+      "info": "Este mixi es un NETCAT que forma parte de COCHO'S CORPORATION (CC)",
+      "isAlive": "true",
+      "hasCromo": "true",
+      "photo": "https://png.pngtree.com/png-clipart/20210309/original/pngtree-a-cute-little-tabby-cat-png-image_5803658.jpg",
+      "id": 12
     }
   ],
   "cyberpunk-villiains": [
