@@ -79,7 +79,7 @@ const printing = (array) => {
   $table.appendChild($fragment);
 };
 
-//================ CRUD ================//
+//================ CRUD FETCH ================//
 
 const POST_character = async (id) => {
   try {
