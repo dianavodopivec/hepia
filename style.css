@@ -850,4 +850,7 @@
   .banter-loader__box:nth-child(9) {
     animation: moveBox-9 4s infinite;
   }
-  
+
+.cancel-edit {
+  background-color: #eb3e3e !important;
+}

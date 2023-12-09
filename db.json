@@ -1,12 +1,12 @@
 {
   "cyberpunk-characters": [
     {
-      "id": 1,
       "name": "David Martinez",
       "info": "David Martinez, often referred to as just David, is a battle-hardened mercenary with a no-nonsense attitude. He has spent his entire life navigating the dangerous streets of Night City and is affiliated with both the Valentinos and Arasaka corporations.",
       "isAlive": "false",
       "hasCromo": "true",
-      "photo": "https://www.destructoid.com/wp-content/uploads/2023/09/Is-David-Martinez-from-Edgerunners-in-Cyberpunk-2077-featured.jpg"
+      "photo": "https://www.destructoid.com/wp-content/uploads/2023/09/Is-David-Martinez-from-Edgerunners-in-Cyberpunk-2077-featured.jpg",
+      "id": 1
     },
     {
       "id": 3,
@@ -73,20 +73,12 @@
       "photo": "https://desu.shikimori.one/uploads/poster/characters/215034/main_2x-4d2d24b20763079c8700c9991a67203c.webp"
     },
     {
-      "id": 11,
-      "name": "asdsa",
-      "info": "adsdasdsa",
+      "name": "xDDDDDD",
+      "info": "asdsda",
       "isAlive": "false",
-      "hasCromo": "true",
-      "photo": "https://png.pngtree.com/png-clipart/20230511/ourmid/pngtree-isolated-cat-on-white-background-png-image_7094927.png"
-    },
-    {
-      "name": "Mixitto",
-      "info": "Este mixi es un NETCAT que forma parte de COCHO'S CORPORATION (CC)",
-      "isAlive": "true",
-      "hasCromo": "true",
-      "photo": "https://png.pngtree.com/png-clipart/20210309/original/pngtree-a-cute-little-tabby-cat-png-image_5803658.jpg",
-      "id": 12
+      "hasCromo": "false",
+      "photo": "https://png.pngtree.com/png-clipart/20230511/ourmid/pngtree-isolated-cat-on-white-background-png-image_7094927.png",
+      "id": 11
     }
   ],
   "cyberpunk-villiains": [
